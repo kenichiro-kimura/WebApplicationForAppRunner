@@ -1,13 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebApplicationForAppRunner.Options;
 
 namespace WebApplicationForAppRunner
 {
@@ -24,6 +20,8 @@ namespace WebApplicationForAppRunner
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.Configure<ApplicationOptions>(Configuration.GetSection(nameof(ApplicationOptions)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
